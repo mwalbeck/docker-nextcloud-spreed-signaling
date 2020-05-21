@@ -42,6 +42,4 @@ RUN set -ex; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*;
 
-USER signaling:signaling
-
 CMD ["/app/signaling", "--config", "/config/server.conf"]
