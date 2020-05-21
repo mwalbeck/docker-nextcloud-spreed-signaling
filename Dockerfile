@@ -19,7 +19,7 @@ RUN set -ex; \
         curl \
         make \
         git \
-        python \
+        python3 \
         golang \
     ; \
     \
