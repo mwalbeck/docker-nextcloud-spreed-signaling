@@ -6,7 +6,9 @@ RUN set -ex; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
     ; \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*; \
+    groupadd --system --gid 601 signaling; \
+    useradd --no-log-init --system --gid signaling --no-create-home --uid 601 signaling;
 
 RUN set -ex; \
     \
@@ -30,12 +32,16 @@ RUN set -ex; \
     make build; \
     mv bin/signaling /app/signaling; \
     mv server.conf.in /config/server.conf; \
+    chown -R signaling:signaling /app; \
+    chown -R signaling:signaling /config; \
     \
     rm -rf /build; \
     \
     apt-mark auto '.*' > /dev/null; \
     apt-mark manual $savedAptMark; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*;
+
+USER signaling:signaling
 
 CMD ["/app/signaling", "--config", "/config/server.conf"]
