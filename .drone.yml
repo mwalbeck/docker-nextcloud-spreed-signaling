@@ -3,9 +3,10 @@ kind: pipeline
 name: nextcloud-spreed-signaling
 
 steps:
-  - name: docker
+  - name: build and publish
     image: plugins/docker
     settings:
+      dockerfile: Dockerfile
       username:
         from_secret: docker_username
       password:
@@ -13,4 +14,27 @@ steps:
       repo: docker.internal.walbeck.it/walbeck-it/nextcloud-spreed-signaling
       registry: docker.internal.walbeck.it
       tags:
-        - latest
+        - "latest"
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+---
+kind: pipeline
+name: nextcloud-spreed-signaling
+
+steps:
+  - name: build test
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      repo: docker.internal.walbeck.it/walbeck-it/nextcloud-spreed-signaling
+      registry: docker.internal.walbeck.it
+      dry_run: true
+
+trigger:
+  event:
+    - pull_request
