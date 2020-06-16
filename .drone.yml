@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: nextcloud-spreed-signaling
+name: build and publish
 
 steps:
   - name: build and publish
@@ -24,7 +24,7 @@ trigger:
 
 ---
 kind: pipeline
-name: nextcloud-spreed-signaling
+name: test
 
 steps:
   - name: build test
