@@ -2,6 +2,12 @@ FROM debian:buster-slim
 
 RUN set -ex; \
     \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
+    ; \
+    rm -rf /var/lib/apt/lists/*; \
+    \
     groupadd --system --gid 601 signaling; \
     useradd --no-log-init --system --gid signaling --no-create-home --uid 601 signaling;
 
@@ -11,7 +17,6 @@ RUN set -ex; \
     \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        ca-certificates \
         curl \
         make \
         git \
