@@ -23,8 +23,6 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: mwalbeck/nextcloud-spreed-signaling
-      tags:
-        - "latest"
   
   - name: notify
     image: plugins/matrix
