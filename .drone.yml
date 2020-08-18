@@ -4,6 +4,16 @@ type: docker
 name: build and publish
 
 steps:
+  - name: determine tags
+    image: bash
+    environment:
+      CUSTOM_TAGS: "latest,"
+    commands:
+      - TAGS="$${CUSTOM_TAGS:-}"
+      - TAGS="$TAGS$(date +%Y%m%d)"
+      - echo -n $TAGS > .tags
+      - echo $TAGS
+
   - name: build and publish
     image: plugins/docker
     settings:
