@@ -1,18 +1,31 @@
 ---
 kind: pipeline
 type: docker
+name: test
+
+steps:
+  - name: build test
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      repo: mwalbeck/nextcloud-spreed-signaling
+      dry_run: true
+
+trigger:
+  event:
+    - pull_request
+
+---
+kind: pipeline
+type: docker
 name: build and publish
 
 steps:
   - name: determine tags
-    image: bash
+    image: mwalbeck/determine-docker-tags
     environment:
-      CUSTOM_TAGS: "latest,"
-    commands:
-      - TAGS="$${CUSTOM_TAGS:-}"
-      - TAGS="$TAGS$(date +%Y%m%d)"
-      - echo -n $TAGS > .tags
-      - echo $TAGS
+      VERSION_TYPE: "date"
+      CUSTOM_TAGS: "latest"
 
   - name: build and publish
     image: plugins/docker
@@ -44,20 +57,3 @@ trigger:
     - master
   event:
     - push
-
----
-kind: pipeline
-type: docker
-name: test
-
-steps:
-  - name: build test
-    image: plugins/docker
-    settings:
-      dockerfile: Dockerfile
-      repo: mwalbeck/nextcloud-spreed-signaling
-      dry_run: true
-
-trigger:
-  event:
-    - pull_request
