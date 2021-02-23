@@ -24,7 +24,9 @@ steps:
   - name: determine tags
     image: mwalbeck/determine-docker-tags
     environment:
-      VERSION_TYPE: "date"
+      VERSION_TYPE: "docker_env"
+      APP_NAME: "SPREED_SIGNALING"
+      DOCKERFILE_PATH: "Dockerfile"
       CUSTOM_TAGS: "latest"
 
   - name: build and publish
