@@ -5,6 +5,10 @@
 
 This is a docker image for the Spreed signaling server for Nextcloud Talk. The image has a debian base. You can find the image on [Docker Hub](https://hub.docker.com/r/mwalbeck/nextcloud-spreed-signaling) and the source code [here](https://git.walbeck.it/walbeck-it/docker-nextcloud-spreed-signaling) with a mirror on [github](https://github/mwalbeck/docker-nextcloud-spreed-signaling).
 
+## Tags
+
+* latest, 0.2, 0.2.x
+
 ## Usage
 
 To configure the signaling server you can mount your own config file to ```/config/server.conf``` inside the container. No other config options are available.
