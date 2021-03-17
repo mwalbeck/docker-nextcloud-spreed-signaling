@@ -1,10 +1,29 @@
 ---
 kind: pipeline
 type: docker
+name: lint
+
+steps:
+  - name: Lint Dockerfile
+    image: hadolint/hadolint
+    commands:
+      - hadolint Dockerfile
+
+trigger:
+  event:
+    - pull_request
+    - push
+  ref:
+    exclude:
+      - refs/heads/renovate/*
+
+---
+kind: pipeline
+type: docker
 name: test
 
 steps:
-  - name: build test
+  - name: test build
     image: plugins/docker
     settings:
       dockerfile: Dockerfile
@@ -14,6 +33,9 @@ steps:
 trigger:
   event:
     - pull_request
+
+depends_on:
+  - lint
 
 ---
 kind: pipeline
@@ -59,3 +81,6 @@ trigger:
     - master
   event:
     - push
+
+depends_on:
+  - lint
