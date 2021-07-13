@@ -3,11 +3,11 @@
 [![Build Status](https://build.walbeck.it/api/badges/walbeck-it/docker-nextcloud-spreed-signaling/status.svg)](https://build.walbeck.it/walbeck-it/docker-nextcloud-spreed-signaling)
 ![Docker Pulls](https://img.shields.io/docker/pulls/mwalbeck/nextcloud-spreed-signaling)
 
-This is a docker image for the Spreed signaling server for Nextcloud Talk. The image has a debian base. You can find the image on [Docker Hub](https://hub.docker.com/r/mwalbeck/nextcloud-spreed-signaling) and the source code can be found [here](https://git.walbeck.it/walbeck-it/docker-nextcloud-spreed-signaling) with a mirror on [github](https://github/mwalbeck/docker-nextcloud-spreed-signaling).
+This is a docker image for the Spreed signaling server for Nextcloud Talk. The image has a debian base. You can find the image on [Docker Hub](https://hub.docker.com/r/mwalbeck/nextcloud-spreed-signaling) and the source code can be found [here](https://git.walbeck.it/walbeck-it/docker-nextcloud-spreed-signaling) with a mirror on [github](https://github.com/mwalbeck/docker-nextcloud-spreed-signaling).
 
 ## Tags
 
-* latest, 0.2, 0.2.x
+* latest, 0.3, 0.3.x
 
 ## Usage
 
