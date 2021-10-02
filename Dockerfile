@@ -12,7 +12,7 @@ RUN set -ex; \
     cd /build; \
     make build;
 
-FROM debian:buster-slim@sha256:431c8d1ba2a0a557b85d76d173d939d8874b83f2d897b8c41a59b8774cd0797d
+FROM debian:buster-slim@sha256:331c322cc893f17b74245542f6c2f3dd8a66cc066ae66c2d5d3c96bb4bf328cb
 
 COPY --from=build /build/bin/signaling /usr/local/bin/signaling
 COPY --from=build /build/server.conf.in /config/server.conf
