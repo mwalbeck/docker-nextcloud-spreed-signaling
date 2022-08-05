@@ -1,12 +1,12 @@
-FROM golang:1.17.13-bullseye@sha256:c10d8b1987ad5ddf7816d2f3a56e4a58b5826285dc1449edbb061b3aad25648b as build
+FROM golang:1.19.0-bullseye@sha256:194242a6c45d50400b3ce00f14e6a510fbf414baefa8bf9c093e5f77cb94605f as build
 
 # renovate: datasource=github-tags depName=strukturag/nextcloud-spreed-signaling versioning=semver
-ENV SPREED_SIGNALING_VERSION v0.5.0
+ENV SPREED_SIGNALING_VERSION v1.0.0
 
 RUN set -ex; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        python3 \
+        protobuf-compiler \
     ; \
     git clone --branch $SPREED_SIGNALING_VERSION https://github.com/strukturag/nextcloud-spreed-signaling.git /build; \
     cd /build; \
