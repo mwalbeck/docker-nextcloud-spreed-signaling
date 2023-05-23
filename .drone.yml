@@ -69,22 +69,6 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: mwalbeck/nextcloud-spreed-signaling
-  
-  - name: notify
-    image: plugins/matrix
-    pull: if-not-exists
-    settings:
-      homeserver: https://matrix.mwalbeck.org
-      roomid:
-        from_secret: matrix_roomid
-      username:
-        from_secret: matrix_username
-      password:
-        from_secret: matrix_password
-    when:
-      status:
-        - success
-        - failure
 
 trigger:
   branch:
@@ -97,6 +81,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: f309f4b69e6729fb09b118eb8d0ec6432371b5b2f3e9872e65339706f8d38582
+hmac: 7708ca375b337c2d008324d2e53a38a6fa3baa3ba834bb90f6a372022d2915e5
 
 ...
