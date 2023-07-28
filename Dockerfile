@@ -1,4 +1,4 @@
-FROM golang:1.20.6-bullseye@sha256:a74524d2e7621ff200f2b709049cb493e99af66b1927769d5ff37f5b0b012793 as build
+FROM golang:1.20.6-bullseye@sha256:00f0b89704829f765de1c9d6e47659895b6c0643a9a0bd6d4cd2590c5badbfb2 as build
 
 # renovate: datasource=github-tags depName=strukturag/nextcloud-spreed-signaling versioning=semver
 ENV SPREED_SIGNALING_VERSION v1.1.3
