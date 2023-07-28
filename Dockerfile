@@ -12,7 +12,7 @@ RUN set -ex; \
     cd /build; \
     make build;
 
-FROM debian:bullseye-slim@sha256:daf93f0038cbdb5f46d07806a56e35d54383bc3229f72d5c37ffa19a6805ac9a
+FROM debian:bullseye-slim@sha256:fd3b382990294beb46aa7549edb9f40b11a070f959365ef7f316724b2e425f90
 
 COPY --from=build /build/bin/signaling /usr/local/bin/signaling
 COPY --from=build /build/server.conf.in /config/server.conf
