@@ -28,7 +28,7 @@ RUN set -ex; \
     ; \
     rm -rf /var/lib/apt/lists/*;
 
-USER signaling:signaling
+USER 601:601
 
 EXPOSE 8088 8443
 
